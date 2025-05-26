@@ -35,7 +35,7 @@ const SectorPieChart: React.FC<Props> = ({ data }) => {
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Tooltip formatter={(value: any) => `$${value.toFixed(2)}`} />
+          <Tooltip formatter={(value: any) => `₹${value.toFixed(2)}`} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>

@@ -39,10 +39,10 @@ const SectorSummaryTable: React.FC<Props> = ({ sectorSummary }) => {
             >
               <td className="px-4 py-3 whitespace-nowrap text-gray-800 font-medium">{sector.sector}</td>
               <td className="px-4 py-3 whitespace-nowrap text-right text-gray-700">
-                ${sector.investment.toFixed(2)}
+                ₹{sector.investment.toFixed(2)}
               </td>
               <td className="px-4 py-3 whitespace-nowrap text-right text-gray-700">
-                ${sector.currentValue.toFixed(2)}
+                ₹{sector.currentValue.toFixed(2)}
               </td>
               <td
                 className={`px-4 py-3 whitespace-nowrap text-right font-semibold ${

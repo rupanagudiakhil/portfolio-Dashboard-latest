@@ -243,10 +243,10 @@ export default function PortfolioTable() {
                       </div>
                     </td>
                     <td className="p-3 border border-gray-300 text-center align-middle">{stock.quantity}</td>
-                    <td className="p-3 border border-gray-300 text-right align-middle">${stock.purchasePrice.toFixed(2)}</td>
-                    <td className="p-3 border border-gray-300 text-right align-middle">${investment.toFixed(2)}</td>
-                    <td className="p-3 border border-gray-300 text-right align-middle">${(stock.cmp ?? 0).toFixed(2)}</td>
-                    <td className="p-3 border border-gray-300 text-right align-middle">${presentValue.toFixed(2)}</td>
+                    <td className="p-3 border border-gray-300 text-right align-middle">₹{stock.purchasePrice.toFixed(2)}</td>
+                    <td className="p-3 border border-gray-300 text-right align-middle">₹{investment.toFixed(2)}</td>
+                    <td className="p-3 border border-gray-300 text-right align-middle">₹{(stock.cmp ?? 0).toFixed(2)}</td>
+                    <td className="p-3 border border-gray-300 text-right align-middle">₹{presentValue.toFixed(2)}</td>
                     <td className="p-3 border border-gray-300 align-middle">
                       <div className={gainLossClass}>
                         {gainLoss > 0 && (
