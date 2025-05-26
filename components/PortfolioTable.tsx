@@ -5,6 +5,7 @@ import SectorSummaryTable from './SectorSummaryTable';
 import TopGainerLosers from '@/components/TopGainerLosers';
 
 
+
 const MOCK_PORTFOLIO: StockData[] = [
   {
     stockName: 'TCS.NS',
