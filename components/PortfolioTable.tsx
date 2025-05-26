@@ -155,7 +155,6 @@ export default function PortfolioTable() {
           body: JSON.stringify({ symbols: googleSymbols }),
         }).then(res => res.json()),
       ]);
-      console.log(yahooDataRes, googleDataRes)
       const updated = data.map((stock, index) => ({
         ...stock,
         cmp: yahooDataRes.cmp[stock.stockGoogle],
@@ -183,7 +182,6 @@ export default function PortfolioTable() {
   const filteredData = data.filter((stock) =>
     stock.stockName.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(filteredData)
   const { gainers, losers } = getTopMovers(data);
   const sectorSummary = getSectorSummary(data);
 
