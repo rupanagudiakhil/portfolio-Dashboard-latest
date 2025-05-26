@@ -3,7 +3,7 @@ import { StockData } from '../types/portfolio';
 import SectorPieChart from './SectorPieChart';
 import SectorSummaryTable from './SectorSummaryTable';
 import TopGainerLosers from '@/components/TopGainerLosers';
-
+import ErrorMessage from './ErrorMessage';
 
 
 const MOCK_PORTFOLIO: StockData[] = [
@@ -132,11 +132,12 @@ export default function PortfolioTable() {
   const [data, setData] = useState<StockData[]>(MOCK_PORTFOLIO);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
 
   const updateData = async () => {
     try {
-
+      setError(null); // clear old error
       const yahooSymbols = data.map(stock => stock.stockName);
       const googleSymbols = data.map(stock => stock.stockGoogle);
 
@@ -155,6 +156,11 @@ export default function PortfolioTable() {
           body: JSON.stringify({ symbols: googleSymbols }),
         }).then(res => res.json()),
       ]);
+      if (!yahooDataRes?.cmp || !googleDataRes?.cmp) {
+        setError('Invalid data structure received from APIs');
+        setLoading(false);
+        return;
+      }
       const updated = data.map((stock, index) => ({
         ...stock,
         cmp: yahooDataRes.cmp[stock.stockGoogle],
@@ -165,8 +171,12 @@ export default function PortfolioTable() {
 
       setData(updated);
 
-    } catch (error) {
-      console.error('Failed to fetch stock data:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An unknown error occurred while updating stock data.');
+      }
     } finally {
       setLoading(false);
 
@@ -192,7 +202,11 @@ export default function PortfolioTable() {
       </div>
     );
   }
-
+  if (error) {
+    return (
+      <ErrorMessage message={error} />
+    );
+  }
   return (
     <>
 
