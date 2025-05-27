@@ -1,7 +1,7 @@
 import { fetchGoogleFinanceData } from '../../lib/googleFinance';
 import { NextApiRequest, NextApiResponse } from 'next';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -17,4 +17,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     console.log(error)
     res.status(500).json({ error: 'Failed to fetch data' });
   }
-};
+}; 
