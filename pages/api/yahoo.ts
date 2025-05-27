@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { fetchYahooFinanceData } from '../../lib/yahooFinance';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
